@@ -60,8 +60,7 @@ menu = st.sidebar.radio(
     ]
 )
 
-st.sidebar.write("---")
-st.sidebar.info("**Criterios:** Dataset tabular | numpy, pandas, sklearn | KNN, KMeans, RF, ID3, Reg. Lineal, Apriori | MSE | Publicado en web")
+
 
 # =====================================================================
 # 1. DATASET Y ANALISIS
@@ -288,7 +287,7 @@ from sklearn.metrics import mean_squared_error            # MSE""", language="py
     df_res = pd.DataFrame(resultados)
     st.dataframe(df_res.style.highlight_max(axis=0, subset=["Accuracy", "Precision", "Recall", "F1-Score"]).highlight_min(axis=0, subset=["MSE"]), use_container_width=True)
 
-    st.success("Librerias: numpy, pandas, scikit-learn | Algoritmos: KNN, ID3, Random Forest, Regresion Lineal | Metrica: MSE")
+
 
     st.write("### Arbol de decision (ID3)")
     arbol = DecisionTreeClassifier(criterion="entropy", max_depth=3, random_state=42)
@@ -404,14 +403,3 @@ elif menu == "🔮 Predecir Credito":
         st.write("### Datos ingresados")
         st.dataframe(entrada, use_container_width=True)
 
-    st.write("---")
-    st.write("### Resumen de criterios de evaluacion")
-    st.markdown("""
-    <div class="card">
-    1. Dataset tabular (Excel, 250 registros, 16 columnas)<br>
-    2. numpy, pandas, scikit-learn<br>
-    3. KNN, KMeans, Random Forest, ID3, Regresion Lineal, Apriori<br>
-    4. Metrica MSE (Mean Squared Error)<br>
-    5. Publicado en la web
-    </div>
-    """, unsafe_allow_html=True)
