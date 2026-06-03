@@ -1220,9 +1220,10 @@ elif menu == "🔮 Predecir Credito":
             "analista": "Sistema ML"
         }
 
+        api_url = os.environ.get("CREDIARANCEL_API_URL", "http://localhost:3000/api/evaluacion/evaluar")
         st.markdown('<div class="card"><div class="card-title">📤 Enviar a CrediArancel</div>', unsafe_allow_html=True)
         try:
-            api_resp = requests.post("http://localhost:3000/api/evaluacion/evaluar", json=payload, timeout=10)
+            api_resp = requests.post(api_url, json=payload, timeout=10)
             if api_resp.status_code == 200:
                 api_data = api_resp.json()
                 st.success(f"✅ Evaluación enviada a CrediArancel (ID: {api_data.get('id', 'N/A')})")
